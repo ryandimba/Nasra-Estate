@@ -8,6 +8,138 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Grace-Estate</title>
 </head>
+<style>
+    html,body{
+    margin: 0;
+    background-color:rgb(240, 240, 240) ;
+    padding: 0;
+}
+nav{
+position: relative;
+width: 100%;
+background-color:rgb(240, 240, 240) ;
+}
+nav a{
+    position: relative;
+    text-decoration: none;
+    padding-left: 60px;
+  top: 20px;
+ justify-self: center;
+}
+nav img{
+    width: 100px;
+    height: 70px;
+    position: relative;
+    padding-left: 60px;
+  top: 40px;
+  background-color: aliceblue;
+ justify-self: center;
+}
+nav hr{
+    position: relative;
+    margin-top: 40px;
+}
+.btn{
+    position: relative;
+    top: 20px;
+    margin-left: 20%;
+    height: 30px;
+    width: 110px;
+    background-color: rgb(0, 42, 255);
+    border-radius: 7px;
+    border: none;
+    color: white;
+}
+.logo{
+    padding-right: 20%;
+}
+.img1{
+    width: 40%;
+    height: auto;
+    float: right;
+    margin-right: 130px;
+    margin-top: 50px;
+}
+.img1_div{
+margin-left: 130px;
+float: left;
+width: 40%;
+margin-top: 50px;
+}
+.img1_div_h{
+    color: rgb(0, 89, 255);
+    font-size: 55px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 130px;
+    float: left;
+    width: 40%;
+    margin-top: 50px;
+}
+.btn1{
+    margin-left: 0;
+}
+.fa{
+    color: rgb(0, 56, 160);
+    position: absolute;
+    margin-left:40px;
+    margin-top: 20px;
+}
+.location{
+position: absolute;
+    width: 70%;
+    margin-left: 15%;
+    background-color: rgb(255, 255, 255);
+    height: 70px;
+    margin-top: 500px;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.location h1{
+    font-size: 20px;
+    display: inline-flex;
+    margin-right: 15%;
+    margin-left: 2%;
+    margin-top: 30px;
+   justify-content: center;
+   color: blue;
+}
+.location button{
+    margin-top: 30px;
+    height: 30px;
+    width: 110px;
+    background-color: rgb(0, 42, 255);
+    border-radius: 2px;
+    border: none;
+    color: white;
+}
+.fa-angle-down{
+margin-left:10px;
+position: relative;
+margin-top: 0px;
+color: blue;
+}
+footer{
+    background-color: rgb(11, 119, 243);
+    color: white;
+    font-style: italic;
+}
+footer ul{
+    display: inline-flex;
+}
+.footer-items{
+    width: 25%;
+}
+.img3_div_h{
+    color: rgb(0, 89, 255);
+    font-size: 55px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 130px;
+    float: left;
+    width: 40%;
+    margin-top: 50px;
+}
+</style>
+<center>
 <header>
     <nav>
 <img class="img2" src="./images/download-(1).jpeg">
@@ -20,6 +152,8 @@
 <hr>
     </nav>
 </header>
+</center>
+<center>
 <body>
     <div>
 <div class="img1_div">
@@ -92,10 +226,73 @@
             <p>System Status</p>
             <p>Privacy policy</p>
     </div>
+    </li>
+
 </li>
 </ul>
 </div>
 <script src="index.js"></script>
+<script>
+    //Alert function
+document.querySelector('#Get').addEventListener('click',
+       () => alert('Getting Started'));
+
+ //Alert function
+document.querySelector('#Get').addEventListener('click',
+() => alert('Getting Started'));
+
+//Alert function
+document.querySelector('#View').addEventListener('click',
+       () => alert('View more'));
+
+      
+const randomSee = document.getElementById("see");
+const display = document.getElementById("display")
+randomSee.addEventListener('click',randomPics);
+let random
+function randomPics(){
+  fetch('https://www.pexels.com/api')
+  .then((response )=> response.json())
+  .then((data) => {
+  console.log(data.image)
+  display.innerHTML="<img src="+data.image +" width='200px' height='200px'/>";
+});
+}
+let flataTitle = document.getElementById("Get started");
+let flataimage = document.getElementById("Get started");
+let flataView = document.querySelector("View");
+function renderContent(data) {
+  flataTitle.innerText = data.title;
+  flataImage.src = data.image;
+  flatalikeBtn.innerHTML = data.likes;
+}
+mainForm = document.getElementById("comment-form");
+mainForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let newInput = document.createElement("li");
+  newInput.innerText = comment.value;
+  flataComment.append(newInput);
+  e.target.reset();
+});
+let num = 0;
+viewBtn.addEventListener("View", function(){
+  num = num + 1;
+  flatalikeBtn.innerText = num + " Get started";
+});
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '25abe8c41cmsh2c11a550467a1f1p19fa9ejsn3cca9fa6752c',
+		'X-RapidAPI-Host': 'real-estate-usa.p.rapidapi.com'
+	}
+};
+
+fetch('https://real-estate-usa.p.rapidapi.com/api/v1/properties?postal_code=94105&offset=0&limit=200', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+</script>
 </body>
+</center>
 </footer>
 </html>
